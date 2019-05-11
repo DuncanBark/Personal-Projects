@@ -5,4 +5,4 @@ Files included are:
 
 Python -- Projects done in Python (usually 2.7)
 
-Processing -- Projects dont in Processing programming environment (Java based)
+Processing -- Projects done in the Processing programming environment (Java based)
