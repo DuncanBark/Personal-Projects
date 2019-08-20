@@ -6,7 +6,8 @@ let numMines = 20;
 
 let field = [];
 
-
+let numbers = [-11, -10, -9, -1, 1, 9, 10, 11];
+let numbers2 = [-10, -1, 1, 10]
 
 function setup() {
 	createCanvas(width, height);
@@ -39,11 +40,26 @@ function mousePressed(){
 }
 
 function uncover(idx){
-	
+	//TODO Fix flooding and edgecases
+	(field[idx]).show((20 + ((idx % 10) * 40)), (20 + ((floor(idx / 10)) * 40)));
+	if ((field[idx]).retMine()){
+		revealAll();
+	} else if ((field[idx]).getNearby() == 0){
+		for (j = 0; j < numbers.length; j++){
+			try {
+				if (!(field[idx+numbers[j]]).retMine()){
+					console.log(idx+numbers[j]);
+					uncover(idx+numbers[j]);
+				}
+			} catch (Exception) {}
+		}
+	} else {
+		(field[idx]).show((20 + ((idx % 10) * 40)), (20 + ((floor(idx / 10)) * 40)));
+	}
 }
 
 function calcMines(){
-	let numbers = [-11, -10, -9, -1, 1, 9, 10, 11];
+	//TODO Fix edgecases
 	for (i = 0; i < numSpots; i++){
 		try {
 			for (j = 0; j < numbers.length; j++){

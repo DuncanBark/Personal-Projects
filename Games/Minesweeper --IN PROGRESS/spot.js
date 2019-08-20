@@ -8,6 +8,25 @@ class Spot{
 		this.revealed = false;
 	}
 
+	show(x, y){
+		this.revealed = true;
+		if (this.hasMine){
+			fill(255, 255, 0);
+			ellipse(x, y, this.width/1.5, this.height/1.5);
+		} else if (this.numNearby > 0) {
+			rectMode(CENTER);
+			fill(200);
+			rect(x, y, this.width-4, this.height-4);
+			fill(0);
+			textAlign(CENTER, CENTER);
+			text(this.numNearby, x, y)
+		} else {
+			rectMode(CENTER);
+			fill(200);
+			rect(x, y, this.width-4, this.height-4);
+		}
+	}
+
 	giveMine(){
 		this.hasMine = true;
 	}
