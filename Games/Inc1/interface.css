@@ -1,0 +1,12 @@
+body {
+	background-color: black;
+}
+
+div {
+	color: white;
+}
+
+button {
+	background-color: white;
+	border-style: inset;
+}

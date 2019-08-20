@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Incr1</title>
+<link rel="stylesheet" type="text/css" href="interface.css" />
+
+
+
+
+<script type="text/javascript" src="main.js"></script>
+</head>
+
+<body onload="load()"></body>
+
+
+<body>
+
+<div id="Cookies">
+	<h3>Cookies</h3>
+	
+	<button onClick="cookieClick(1)">
+	Bake a cookie 
+	</button>
+
+	<dn id="numcookies">
+		Number of Cookies: <span id="cookies">0</span>
+	</dn>
+
+	<div>
+		<button onClick="buyGrandma()">
+			Buy a Grandma for <span id="grandmaCost">10</span> cookies
+		</button>
+
+		<dn id="numgrandmas">
+			Number of Grandmas: <span id="grandmas">0</span>
+		</dn>
+
+		<dn id="grandmaearning"> 
+			CPS: <span id="grandmaEarning">0</span>
+		</dn>
+	</div>
+
+
+</div>
+
+<div id="Biscuit">
+		<h3>Biscuits</h3>
+	<button onClick="biscuitClick(2)">
+	Bake a biscuit 
+	</button>
+
+	<dn id="numbiscuits">
+		Number of Biscuits: <span id="biscuits">0</span>
+	</dn>
+</div>
+
+
+
+
+
+<div id="Options">
+		<h3>Options</h3>
+	<button onClick="save(1)">
+	Save game
+	</button>
+	<button onClick="load()">
+	Load game 
+	</button>
+	<button onClick="deleteSave()">
+	Delete game 
+	</button>
+
+</div>
+
+</body>
+
+</html>

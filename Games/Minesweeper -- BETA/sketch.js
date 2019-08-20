@@ -6,7 +6,8 @@ let rows = 15;
 
 let plotWidth = width/cols;
 
-let numMines = (cols * rows) / 10;
+let numMines = Math.floor((cols * rows) / 10);
+let flagCount = numMines;
 
 let field = make2DArray(cols, rows);
 
@@ -19,6 +20,7 @@ function make2DArray(col, row){
 }
 
 function setup(){
+	background(255);
 	createCanvas(width, height);
 
 	for (i = 0; i<field.length; i++){
@@ -32,8 +34,11 @@ function setup(){
 	for (i = 0; i<field.length; i++){
 		for (j = 0; j<field[0].length; j++){
 			field[i][j].setNearby(field[i][j].countMines());
+			field[i][j].prelimShow();
 		}
 	}
+
+	drawField();
 }
 
 function mousePressed(){
@@ -43,6 +48,7 @@ function mousePressed(){
 	if (mouseButton === LEFT){
 		(field[mi][mj]).reveal();
 	} else if (mouseButton === CENTER){
+		flagCount--;
 		(field[mi][mj]).setflag();
 	}
 }
@@ -50,7 +56,7 @@ function mousePressed(){
 function revealAll(){
 	for (i = 0; i<field.length; i++){
 		for (j = 0; j<field[0].length; j++){
-			field[i][j].reveal();
+			field[i][j].showAll();
 		}
 	}
 }
@@ -59,12 +65,15 @@ function addMines(mineCount){
 	for (i = 0; i < mineCount; i++){
 		let ranx = floor(random(cols));
 		let rany = floor(random(rows));
-		field[ranx][rany].giveMine();
+		if (!field[ranx][rany].hasMine()){
+			field[ranx][rany].giveMine();
+		} else {
+			i--;
+		}
 	}
 }
 
-function draw(){
-	background(255);
+function drawField(){
 	for (i = 0; i<field.length; i++){
 		for (j = 0; j<field[0].length; j++){
 			field[i][j].show();
