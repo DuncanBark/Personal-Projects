@@ -43,8 +43,8 @@ class Spot{
 		return this.numNearby;
 	}
 
-	incrNearby(){
-		this.numNearby += 1;
+	incrNearby(val = 1){
+		this.numNearby += val;
 	}
 
 	retMine(){
