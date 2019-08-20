@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Rockets</title>
+<link rel="stylesheet" type="text/css" href="interface.css" />
+<script type="text/javascript" src="main.js"></script>
+</head>
+
+<body>
+<div class="main">
+	<div class="column">
+		<h2>Store</h2>
+		<p>Purchase parts here</p>
+		<p>Total Money: $<span id="money">0</span>
+		<br>
+		Total Fame: <span id="fame">0</span>
+		</p>
+
+		<amz class="columnstore">
+			<h3>Amazon</h3>
+			<p>Rep: <span id="amzRep">0</span></p>
+			<parts id="parts" class="parts1">
+				Body tube: 
+				<button onClick="buyBT()">
+					$ <c id="bodytubeCost">0</c>
+				</button>
+				<br>
+				Motor tube: 
+				<button onClick="buyMT()">
+					$ <c id="motortubeCost">0</c>
+				</button>
+				<br>
+				Motor: 
+				<button onClick="buyMotor()">
+					$ <c id="motorCost">0</c>
+				</button>
+				<br>
+				Nosecone: 
+				<button onClick="buyNC()">
+					$ <c id="noseconeCost">0</c>
+				</button>
+			</parts>
+		</amz>
+
+		<generic class="columnstore">
+			<h3>Generic Rockets</h3>
+			<p>Rep: <span id="genrockRep">0</span></p>
+			<parts id="parts" class="parts1">
+				Body tube: 
+				<button onClick="buyBT()">
+					$ <c id="bodytubeCost">0</c>
+				</button>
+				<br>
+				Motor tube: 
+				<button onClick="buyMT()">
+					$ <c id="motortubeCost">0</c>
+				</button>
+				<br>
+				Motor: 
+				<button onClick="buyMotor()">
+					$ <c id="motorCost">0</c>
+				</button>
+				<br>
+				Nosecone: 
+				<button onClick="buyNC()">
+					$ <c id="noseconeCost">0</c>
+				</button>
+			</parts>
+		</generic>			
+	</div>
+
+	<div class="column">
+		<h2>Flight Statistics</h2>
+		<button onclick="fly()">
+			Launch your rocket
+			<br>
+			<span id="launchCost">Cost: $ 0</span>
+		</button>
+		<br> <br>
+		<s1 id="stats" class="s1">
+			<s2 id="alt" class="s2">
+				Maximum Altitude: 
+				<s3 class="s3">
+					<span id="maxAlt">0</span> m
+				</s3>
+			</s2>
+			<br>
+			<s2 id="vel" class="s2">
+				Maximum Velocity
+				<s3 class="s3">
+					<span id="maxVel">0</span> m/s
+				</s3>
+			</s2>
+			<br>
+			<s2 id="accel" class="s2">
+				Maximum Acceleration: 
+				<s3 class="s3">
+					<span id="maxAccel">0</span> G
+				</s3>
+			</s2>
+		</s1>
+		<br>
+		<s1 id="earnings" class="s1">
+			<s2 id="gold" class="s2">
+				Money Earned:
+				<s3 class="s3"> 
+					$<span id="moneyEarned">0</span>
+				</s3>
+			</s2>
+			<br>
+			<s2 id="fame" class="s2">
+				Fame Earned: 
+				<s3 class="s3">
+					<span id="fameEarned">0</span>
+				</s3>
+			</s2>
+		</s1>
+	</div>
+</div>
+
+</body>
+
+</html>
