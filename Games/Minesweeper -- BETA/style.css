@@ -5,3 +5,12 @@ html, body {
 canvas {
   display: block;
 }
+
+h1 {
+	font-family: "Lucida Console";
+	margin: 5px;
+}
+
+button {
+	font-family: "Lucida Console";
+}

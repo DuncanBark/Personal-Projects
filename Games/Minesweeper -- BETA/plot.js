@@ -1,9 +1,6 @@
 class Plot{
 
 	constructor(i, j, w){
-		this.grass = color(0, 110, 30);
-		this.dirt = color(134, 89, 45);
-
 		this.i = i;
 		this.j = j;
 		this.w = w;
@@ -19,34 +16,25 @@ class Plot{
 	}
 
 	show(){
-		//console.log(flagCount);
-		// if (this.flag && !this.revealed && flagCount > 0){
-		// 	textAlign(CENTER, CENTER);
-		// 	textSize(35);
-		// 	fill(255, 0, 0);
-		// 	text("X", this.x+this.w/2, this.y+this.w/2);
-		// }
 		if (this.shown) {
 			if (!this.mine){
 				if (this.numNearby == 0){
-					this.drawRect(this.dirt, this.x, this.y, this.w, this.w);
+					image(dirtImg, this.x, this.y);
 				} else {
-					this.drawRect(this.dirt, this.x, this.y, this.w, this.w);
-					fill(0);
+					image(dirtImg, this.x, this.y);
 					textAlign(CENTER, CENTER);
-					textSize(25);
+					textSize(20);
+					textStyle(BOLD);
 					text(this.numNearby, this.x+this.w/2, this.y+this.w/2);
 				}
 			} else {
-				this.drawRect(this.dirt, this.x, this.y, this.w, this.w);
-				fill(255, 0, 0);
-				ellipse(this.x+this.w/2, this.y+this.w/2, this.w/1.5);
+				image(mineImg, this.x, this.y, this.w, this.w);
 			}	
 		}
 	}
 
 	prelimShow(){
-		this.drawRect(this.grass, this.x, this.y, this.w, this.w);
+		image(grassImg, this.x, this.y);
 	}
 
 	countMines(){
@@ -84,26 +72,22 @@ class Plot{
 		return this.mine;
 	}
 
-	setflag(flagImg){
+	setflag(){
 		if (this.flag){
 			flagCount++;
 			this.flag = false;
-			this.drawRect(this.grass, this.x, this.y, this.w, this.w);
-			fill(this.dirt);
-			strokeWeight(1);
-			ellipse(this.x+this.w/2, this.y+this.w/2, this.w/4, this.w/4);
+			image(grassImg, this.x, this.y);
+			image(flagholeImg, this.x, this.y);
 		} else if (!this.flag){
-			this.drawRect(this.grass, this.x, this.y, this.w, this.w);
+			image(grassImg, this.x, this.y);
 			image(flagImg, this.x, this.y);
 			flagCount--;
+			if (flagCount == 0){
+				checkWin(0, 0);
+			}
 			this.flag = true;
 		}
 		this.show();
-	}
-
-	drawRect(c, x, y, width, height){
-		fill(c);
-		rect(x, y, width, height);
 	}
 
 	showAll(){
