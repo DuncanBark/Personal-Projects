@@ -1,6 +1,9 @@
 class Plot{
 
 	constructor(i, j, w){
+		this.grass = color(0, 110, 30);
+		this.dirt = color(134, 89, 45);
+
 		this.i = i;
 		this.j = j;
 		this.w = w;
@@ -16,33 +19,26 @@ class Plot{
 	}
 
 	show(){
-		console.log(flagCount);
-		if (this.flag && !this.revealed && flagCount > 0){
-			textAlign(CENTER, CENTER);
-			textSize(35);
-			fill(255, 0, 0);
-			text("X", this.x+this.w/2, this.y+this.w/2);
-		}
+		//console.log(flagCount);
+		// if (this.flag && !this.revealed && flagCount > 0){
+		// 	textAlign(CENTER, CENTER);
+		// 	textSize(35);
+		// 	fill(255, 0, 0);
+		// 	text("X", this.x+this.w/2, this.y+this.w/2);
+		// }
 		if (this.shown) {
-			// if (!this.revealed){
-			// 	fill(255);
-			// 	rect(this.x, this.y, this.w, this.w);
-			// }
 			if (!this.mine){
 				if (this.numNearby == 0){
-					fill(230);
-					rect(this.x, this.y, this.w-2, this.w-2);
+					this.drawRect(this.dirt, this.x, this.y, this.w, this.w);
 				} else {
-					fill(230);
-					rect(this.x, this.y, this.w-2, this.w-2);
+					this.drawRect(this.dirt, this.x, this.y, this.w, this.w);
 					fill(0);
 					textAlign(CENTER, CENTER);
 					textSize(25);
 					text(this.numNearby, this.x+this.w/2, this.y+this.w/2);
 				}
 			} else {
-				fill(230);
-				rect(this.x, this.y, this.w-2, this.w-2);
+				this.drawRect(this.dirt, this.x, this.y, this.w, this.w);
 				fill(255, 0, 0);
 				ellipse(this.x+this.w/2, this.y+this.w/2, this.w/1.5);
 			}	
@@ -50,8 +46,7 @@ class Plot{
 	}
 
 	prelimShow(){
-		fill(255);
-		rect(this.x, this.y, this.w-2, this.w-2);
+		this.drawRect(this.grass, this.x, this.y, this.w, this.w);
 	}
 
 	countMines(){
@@ -89,16 +84,26 @@ class Plot{
 		return this.mine;
 	}
 
-	setflag(){
+	setflag(flagImg){
 		if (this.flag){
 			flagCount++;
 			this.flag = false;
-			fill(255);
-			rect(this.x, this.y, this.w-2, this.w-2);
+			this.drawRect(this.grass, this.x, this.y, this.w, this.w);
+			fill(this.dirt);
+			strokeWeight(1);
+			ellipse(this.x+this.w/2, this.y+this.w/2, this.w/4, this.w/4);
 		} else if (!this.flag){
+			this.drawRect(this.grass, this.x, this.y, this.w, this.w);
+			image(flagImg, this.x, this.y);
+			flagCount--;
 			this.flag = true;
 		}
 		this.show();
+	}
+
+	drawRect(c, x, y, width, height){
+		fill(c);
+		rect(x, y, width, height);
 	}
 
 	showAll(){
