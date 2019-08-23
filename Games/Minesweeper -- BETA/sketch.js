@@ -82,7 +82,7 @@ function remake(){
 function mousePressed(){
 	let mi = floor(mouseX/plotWidth);
 	let mj = floor(mouseY/plotWidth);
-	if (mi >= 0 && mj >= 0){
+	if ((mi >= 0 && mj >= 0) && (mi < cols && mj < rows)){
 		if (mouseButton === LEFT){
 			(field[mi][mj]).reveal();
 		} else if (mouseButton === CENTER){
