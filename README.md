@@ -1,9 +1,7 @@
 # Personal-Projects
-Repo for all my personal projects.
+Repo for my personal projects (Excluding games).
 
 Files included are:
-
-Games -- Various games done in Javascript with HTML and CSS
 
 Python -- Projects done in Python (usually 2.7)
 
